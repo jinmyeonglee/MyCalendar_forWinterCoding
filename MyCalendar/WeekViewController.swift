@@ -8,9 +8,8 @@
 
 import UIKit
 import FSCalendar
+import RealmSwift
 
-var scheds: [ScheduleModel]! = []
-var currentScheds: [ScheduleModel]! = []
 var currentPage: Date = Date()
 
 
@@ -21,6 +20,9 @@ class WeekViewController: UIViewController, FSCalendarDataSource, FSCalendarDele
     @IBOutlet weak var schedTableView: UITableView!
     @IBOutlet weak var calendarHeightConstraints: NSLayoutConstraint!
     
+    private var realm: Realm!
+    private var allSchedule: Results<ScheduleModel>!
+    var currentScheds: [ScheduleModel]! = []
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return currentScheds.count
@@ -40,13 +42,16 @@ class WeekViewController: UIViewController, FSCalendarDataSource, FSCalendarDele
     override func viewDidLoad() {
         super.viewDidLoad()
         self.calendar.scope = .week
-        scheds.sort(by: {$0.date! < $1.date!})
-        //calendar.currentPage = calendar.currentPage.adding(day: -3)
+        // Realm init
+        realm = try! Realm()
+        
+        allSchedule = realm.objects(ScheduleModel.self).sorted(byKeyPath: "date", ascending: true)
+        
         currentScheds.removeAll()
         let cal = Calendar(identifier: .gregorian)
         let comps = cal.dateComponents([.weekday], from:currentPage)
         
-        for sched in scheds {
+        for sched in allSchedule {
             if(currentPage.adding(day: -1 * comps.weekday! + 1) < sched.date! && currentPage.adding(day: 7 - comps.weekday!) > sched.date!) {
                 currentScheds.append(sched)
             }
@@ -57,18 +62,19 @@ class WeekViewController: UIViewController, FSCalendarDataSource, FSCalendarDele
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(true)
-        scheds.sort(by: { $0.date! < $1.date! })
+        allSchedule = realm.objects(ScheduleModel.self).sorted(byKeyPath: "date", ascending: true)
         
         let cal = Calendar(identifier: .gregorian)
-        let comps = cal.dateComponents([.weekday], from:currentPage)
+        let comps = cal.dateComponents([.weekday], from:calendar.currentPage)
         
         currentScheds.removeAll()
-        for sched in scheds {
-            if(currentPage.adding(day: -1 * comps.weekday!) < sched.date! && currentPage.adding(day: 7 - comps.weekday!) > sched.date!) {
+        for sched in allSchedule {
+            if(calendar.currentPage.adding(day: -1 * comps.weekday!) < sched.date! && calendar.currentPage.adding(day: 7 - comps.weekday!) > sched.date!) {
                 currentScheds.append(sched)
             }
         }
         schedTableView.reloadData()
+        calendar.reloadData()
     }
     
     func calendar(_ calendar: FSCalendar, didSelect date: Date, at monthPosition: FSCalendarMonthPosition) {
@@ -84,8 +90,9 @@ class WeekViewController: UIViewController, FSCalendarDataSource, FSCalendarDele
     
     func calendarCurrentPageDidChange(_ calendar: FSCalendar) {
         currentScheds.removeAll()
+        allSchedule = realm.objects(ScheduleModel.self).sorted(byKeyPath: "date", ascending: true)
         
-        for sched in scheds {
+        for sched in allSchedule {
             if(calendar.currentPage < sched.date! && calendar.currentPage.adding(day: 7) > sched.date!) {
                 currentScheds.append(sched)
             }

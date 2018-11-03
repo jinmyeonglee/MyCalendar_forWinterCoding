@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import RealmSwift
 
 class DailyViewController: UIViewController, UITableViewDelegate, UITableViewDataSource, UIGestureRecognizerDelegate {
     
@@ -17,7 +18,10 @@ class DailyViewController: UIViewController, UITableViewDelegate, UITableViewDat
     
     @IBOutlet weak var dailySchedTableView: UITableView!
     
+    private var realm: Realm!
+    
     var todaySchedule: [ScheduleModel]! = []
+    private var allSchedule: Results<ScheduleModel>!
     var currentDate = Date()
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
@@ -36,8 +40,10 @@ class DailyViewController: UIViewController, UITableViewDelegate, UITableViewDat
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        realm = try! Realm()
+        
         loadTodaySchedule()
-       todayDate.text = self.dateFormatter.string(from: currentDate)
+        todayDate.text = self.dateFormatter.string(from: currentDate)
        
         nextDate.addGestureRecognizer(UITapGestureRecognizer.init(target: self, action: #selector(DailyViewController.clickNextDate)))
         nextDate.isUserInteractionEnabled = true
@@ -56,7 +62,8 @@ class DailyViewController: UIViewController, UITableViewDelegate, UITableViewDat
     
     func loadTodaySchedule() {
         todaySchedule.removeAll()
-        for sched in scheds {
+        allSchedule = realm.objects(ScheduleModel.self).sorted(byKeyPath: "date", ascending: true)
+        for sched in allSchedule {
             if(sched.date?.getYearName() == currentDate.getYearName() && sched.date?.getMonthName() == currentDate.getMonthName() && sched.date?.getDayName() == currentDate.getDayName()) {
                 todaySchedule.append(sched)
             }

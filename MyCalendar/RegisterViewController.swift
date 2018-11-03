@@ -7,11 +7,14 @@
 //
 
 import UIKit
+import RealmSwift
 
 class RegisterViewController: UIViewController {
     
     @IBOutlet weak var datePicker: UIDatePicker!
     @IBOutlet weak var contentTxt: UITextField!
+    
+    private var realm: Realm!
     
     var date: String = ""
     var content: String = ""
@@ -20,7 +23,8 @@ class RegisterViewController: UIViewController {
         super.viewDidLoad()
         // self.hideKeyboardWhenTappedAround()
         datePicker.timeZone = TimeZone(identifier: "Asia/Seoul")
-        
+        // Realm init
+        realm = try! Realm()
         
     }
     
@@ -30,12 +34,14 @@ class RegisterViewController: UIViewController {
     
     
     @IBAction func addSchedule(_ sender: Any) {
-        
         content = contentTxt.text ?? ""
         
         if(content != "") {
             let newScehd = ScheduleModel(content: content, date: datePicker.date)
-            scheds.append(newScehd)
+            // scheds.append(newScehd)
+            try! realm.write {
+                realm.add(newScehd)
+            }
             self.navigationController?.popViewController(animated: true)
         }
         

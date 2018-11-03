@@ -9,12 +9,19 @@
 import Foundation
 import RealmSwift
 
-class ScheduleModel {
-    var content: String! = ""
-    var date: Date?
+class ScheduleModel: Object {
+    @objc dynamic var content: String! = ""
+    @objc dynamic var date: Date? = Date()
     
-    init(content: String, date:Date) {
+    convenience init(content: String, date: Date) {
+        self.init()
         self.content = content
         self.date = date
     }
+    
+//    init(content: String, date: Date) {
+//        self.content = content
+//        self.date = date
+//    }
+    
 }
