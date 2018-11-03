@@ -52,11 +52,11 @@ class WeekViewController: UIViewController, FSCalendarDataSource, FSCalendarDele
         let comps = cal.dateComponents([.weekday], from:currentPage)
         
         for sched in allSchedule {
-            if(currentPage.adding(day: -1 * comps.weekday! + 1) < sched.date! && currentPage.adding(day: 7 - comps.weekday!) > sched.date!) {
+            if(currentPage.adding(day: -1 * comps.weekday! + 1) < sched.date! && currentPage.adding(day: 8 - comps.weekday!) > sched.date!) {
                 currentScheds.append(sched)
             }
         }
-        //schedTableView.reloadData()
+        schedTableView.reloadData()
     }
     
     
@@ -69,7 +69,7 @@ class WeekViewController: UIViewController, FSCalendarDataSource, FSCalendarDele
         
         currentScheds.removeAll()
         for sched in allSchedule {
-            if(calendar.currentPage.adding(day: -1 * comps.weekday!) < sched.date! && calendar.currentPage.adding(day: 7 - comps.weekday!) > sched.date!) {
+            if(calendar.currentPage.adding(day: -1 * comps.weekday! + 1) < sched.date! && calendar.currentPage.adding(day: 8 - comps.weekday!) > sched.date!) {
                 currentScheds.append(sched)
             }
         }
