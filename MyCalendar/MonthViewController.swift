@@ -17,18 +17,18 @@ class MonthViewController: UIViewController, FSCalendarDataSource, FSCalendarDel
         super.viewDidLoad()
         Calendar.delegate = self
         Calendar.dataSource = self
-        scheds.append(ScheduleModel(dateString: "2018/11/02", content: "아 ios싫다....", date: Date()))
-        scheds.append(ScheduleModel(dateString: "2018/11/02", content: "아 히로록히로록", date: Date().adding(day: -6)))
-        scheds.append(ScheduleModel(dateString: "2018/11/02", content: "아 ios싫다..재미가 읍따", date: Date().adding(day: -5)))
-        scheds.append(ScheduleModel(dateString: "2018/11/02", content: "아 사쿠라 넘무 예뻐요", date: Date().adding(day: -4)))
-        scheds.append(ScheduleModel(dateString: "2018/11/02", content: "배고팡...힝구!", date: Date().adding(day: -3)))
-        scheds.append(ScheduleModel(dateString: "2018/11/02", content: "와 진짜 하나도 안예쁘다..", date: Date().adding(day: 1)))
-        scheds.append(ScheduleModel(dateString: "2018/11/02", content: "그치만,,,난 주말동안 놀거라궁!!", date: Date().adding(day: 2)))
-        scheds.append(ScheduleModel(dateString: "2018/11/02", content: "뀨... 난 기여워..", date: Date().adding(day: 3)))
-        scheds.append(ScheduleModel(dateString: "2018/11/02", content: "끼루룩...", date: Date().adding(day: 3)))
-        scheds.append(ScheduleModel(dateString: "2018/11/02", content: "대구가고싶다!!!!!!!", date: Date().adding(day: -1)))
-        scheds.append(ScheduleModel(dateString: "2018/11/02", content: "이제 할말이 없는뎅...히히", date: Date().adding(day: 4)))
-        scheds.append(ScheduleModel(dateString: "2018/11/02", content: "딘몽,,,ㅠㅜㅠㅜ배고파여...ㅠㅜㅠㅜㅠㅜ", date: Date().adding(day: 1)))
+        scheds.append(ScheduleModel(content: "아 ios싫다....", date: Date()))
+        scheds.append(ScheduleModel(content: "아 히로록히로록", date: Date().adding(day: -6)))
+        scheds.append(ScheduleModel(content: "아 ios싫다..재미가 읍따", date: Date().adding(day: -5)))
+        scheds.append(ScheduleModel(content: "아 사쿠라 넘무 예뻐요", date: Date().adding(day: -4)))
+        scheds.append(ScheduleModel(content: "배고팡...힝구!", date: Date().adding(day: -3)))
+        scheds.append(ScheduleModel(content: "와 진짜 하나도 안예쁘다..", date: Date().adding(day: 1)))
+        scheds.append(ScheduleModel(content: "그치만,,,난 주말동안 놀거라궁!!", date: Date().adding(day: 2)))
+        scheds.append(ScheduleModel(content: "뀨... 난 기여워..", date: Date().adding(day: 3)))
+        scheds.append(ScheduleModel(content: "끼루룩...", date: Date().adding(day: 3)))
+        scheds.append(ScheduleModel(content: "대구가고싶다!!!!!!!", date: Date().adding(day: -1)))
+        scheds.append(ScheduleModel(content: "이제 할말이 없는뎅...히히", date: Date().adding(day: 4)))
+        scheds.append(ScheduleModel(content: "딘몽,,,ㅠㅜㅠㅜ배고파여...ㅠㅜㅠㅜㅠㅜ", date: Date().adding(day: 1)))
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -47,8 +47,6 @@ class MonthViewController: UIViewController, FSCalendarDataSource, FSCalendarDel
     }
 
 }
-
-
 
 extension Date {
     func getMonthName() -> String {

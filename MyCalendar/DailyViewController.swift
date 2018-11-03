@@ -43,8 +43,7 @@ class DailyViewController: UIViewController, UITableViewDelegate, UITableViewDat
         nextDate.isUserInteractionEnabled = true
         previousDate.addGestureRecognizer(UITapGestureRecognizer.init(target: self, action: #selector(DailyViewController.clickPreviousDate)))
         previousDate.isUserInteractionEnabled = true
-        
-        todaySchedule.append(ScheduleModel(dateString: "2018/11/05", content: "testtest", date: Date()))
+
 
         // Do any additional setup after loading the view.
     }

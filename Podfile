@@ -5,5 +5,6 @@ use_frameworks!
 
 target 'MyCalendar' do
   pod 'FSCalendar'
+  pod 'RealmSwift'
   
 end

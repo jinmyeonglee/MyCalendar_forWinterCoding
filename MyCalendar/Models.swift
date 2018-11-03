@@ -7,15 +7,13 @@
 //
 
 import Foundation
+import RealmSwift
 
 class ScheduleModel {
-    var dateString: String! = ""
     var content: String! = ""
     var date: Date?
     
-    
-    init(dateString: String, content: String, date:Date) {
-        self.dateString = dateString
+    init(content: String, date:Date) {
         self.content = content
         self.date = date
     }

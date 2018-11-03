@@ -30,14 +30,11 @@ class RegisterViewController: UIViewController {
     
     
     @IBAction func addSchedule(_ sender: Any) {
-        let formatter = DateFormatter()
-        formatter.dateFormat = "yyyy/MM/dd"
         
         content = contentTxt.text ?? ""
-        date = formatter.string(from: datePicker.date)
         
         if(content != "") {
-            let newScehd = ScheduleModel(dateString: date, content: content, date: datePicker.date)
+            let newScehd = ScheduleModel(content: content, date: datePicker.date)
             scheds.append(newScehd)
             self.navigationController?.popViewController(animated: true)
         }
