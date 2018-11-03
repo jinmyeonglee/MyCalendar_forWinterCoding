@@ -1,10 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14313.18" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="9i2-JK-wHT">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14460.31" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="9i2-JK-wHT">
     <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14283.14"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14460.20"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -12,7 +12,6 @@
         <!--Daily-->
         <scene sceneID="sWs-oP-447">
             <objects>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="Qqc-Je-H6Y" userLabel="First Responder" sceneMemberID="firstResponder"/>
                 <viewController id="OXE-IZ-Z0H" customClass="DailyViewController" customModule="MyCalendar" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="g6G-yl-vxT">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
@@ -145,6 +144,7 @@
                         <outlet property="todayDate" destination="mMd-jE-QsK" id="FmN-Dd-Dy7"/>
                     </connections>
                 </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="Qqc-Je-H6Y" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="464.80000000000001" y="455.62218890554726"/>
         </scene>
@@ -446,10 +446,10 @@
             </objects>
             <point key="canvasLocation" x="1604" y="-266"/>
         </scene>
-        <!--Tab Bar Controller-->
+        <!--Tab Bar View Controller-->
         <scene sceneID="sOx-au-CYO">
             <objects>
-                <tabBarController id="9i2-JK-wHT" sceneMemberID="viewController">
+                <tabBarController id="9i2-JK-wHT" customClass="TabBarViewController" customModule="MyCalendar" customModuleProvider="target" sceneMemberID="viewController">
                     <tabBar key="tabBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="Cb3-un-CMK">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="49"/>
                         <autoresizingMask key="autoresizingMask"/>
@@ -474,6 +474,6 @@
         <image name="icon_week" width="36" height="36"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="ac6-yb-klS"/>
+        <segue reference="4e0-8k-bIc"/>
     </inferredMetricsTieBreakers>
 </document>

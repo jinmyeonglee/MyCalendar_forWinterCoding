@@ -56,9 +56,18 @@ class WeekViewController: UIViewController, FSCalendarDataSource, FSCalendarDele
                 currentScheds.append(sched)
             }
         }
+        
         schedTableView.reloadData()
+        
     }
     
+    override func viewDidDisappear(_ animated: Bool) {
+        super.viewDidDisappear(true)
+        UserDefaults.standard.set(self.tabBarController?.selectedIndex, forKey: "tabIndex")
+        UserDefaults.standard.synchronize()
+//        print(self.tabBarController?.selectedIndex)
+//        print(UserDefaults.standard.integer(forKey: "tabIndex"))
+    }
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(true)
@@ -75,6 +84,7 @@ class WeekViewController: UIViewController, FSCalendarDataSource, FSCalendarDele
         }
         schedTableView.reloadData()
         calendar.reloadData()
+        
     }
     
     func calendar(_ calendar: FSCalendar, didSelect date: Date, at monthPosition: FSCalendarMonthPosition) {

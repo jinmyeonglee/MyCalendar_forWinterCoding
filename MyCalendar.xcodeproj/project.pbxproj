@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		5E22B480218D4C3500218DF9 /* TabBarViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5E22B47F218D4C3500218DF9 /* TabBarViewController.swift */; };
 		5EC422262189AD8500DA8C43 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5EC422252189AD8500DA8C43 /* AppDelegate.swift */; };
 		5EC422282189AD8500DA8C43 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5EC422272189AD8500DA8C43 /* ViewController.swift */; };
 		5EC4222B2189AD8500DA8C43 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 5EC422292189AD8500DA8C43 /* Main.storyboard */; };
@@ -40,6 +41,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		5E22B47F218D4C3500218DF9 /* TabBarViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabBarViewController.swift; sourceTree = "<group>"; };
 		5EC422222189AD8500DA8C43 /* MyCalendar.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = MyCalendar.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		5EC422252189AD8500DA8C43 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		5EC422272189AD8500DA8C43 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -125,6 +127,7 @@
 				5EC422D3218AA14300DA8C43 /* RegisterViewController.swift */,
 				5EC422D5218AA55E00DA8C43 /* Models.swift */,
 				5EC422D7218C96ED00DA8C43 /* DailyViewController.swift */,
+				5E22B47F218D4C3500218DF9 /* TabBarViewController.swift */,
 			);
 			path = MyCalendar;
 			sourceTree = "<group>";
@@ -348,6 +351,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				5E22B480218D4C3500218DF9 /* TabBarViewController.swift in Sources */,
 				5EC422D8218C96ED00DA8C43 /* DailyViewController.swift in Sources */,
 				5EC422282189AD8500DA8C43 /* ViewController.swift in Sources */,
 				5EC422D4218AA14300DA8C43 /* RegisterViewController.swift in Sources */,

@@ -19,9 +19,4 @@ class ScheduleModel: Object {
         self.date = date
     }
     
-//    init(content: String, date: Date) {
-//        self.content = content
-//        self.date = date
-//    }
-    
 }

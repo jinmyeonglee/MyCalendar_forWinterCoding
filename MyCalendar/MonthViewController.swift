@@ -26,11 +26,19 @@ class MonthViewController: UIViewController, FSCalendarDataSource, FSCalendarDel
         realm = try! Realm()
         
         allSchedule = realm.objects(ScheduleModel.self).sorted(byKeyPath: "date", ascending: true)
-        
     }
     
     override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(true)
         Calendar.reloadData()
+    }
+    
+    override func viewDidDisappear(_ animated: Bool) {
+        super.viewDidDisappear(true)
+        UserDefaults.standard.set(self.tabBarController?.selectedIndex, forKey: "tabIndex")
+        UserDefaults.standard.synchronize()
+//        print(self.tabBarController?.selectedIndex)
+//        print(UserDefaults.standard.integer(forKey: "tabIndex"))
     }
     
     func calendar(_ calendar: FSCalendar, numberOfEventsFor date: Date) -> Int {

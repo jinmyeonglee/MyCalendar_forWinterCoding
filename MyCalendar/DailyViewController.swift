@@ -49,15 +49,20 @@ class DailyViewController: UIViewController, UITableViewDelegate, UITableViewDat
         nextDate.isUserInteractionEnabled = true
         previousDate.addGestureRecognizer(UITapGestureRecognizer.init(target: self, action: #selector(DailyViewController.clickPreviousDate)))
         previousDate.isUserInteractionEnabled = true
-
-
-        // Do any additional setup after loading the view.
     }
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(true)
         loadTodaySchedule()
         dailySchedTableView.reloadData()
+    }
+    
+    override func viewDidDisappear(_ animated: Bool) {
+        super.viewDidDisappear(true)
+        UserDefaults.standard.set(self.tabBarController?.selectedIndex, forKey: "tabIndex")
+        UserDefaults.standard.synchronize()
+//        print(self.tabBarController?.selectedIndex)
+//        print(UserDefaults.standard.integer(forKey: "tabIndex"))
     }
     
     func loadTodaySchedule() {
@@ -72,7 +77,7 @@ class DailyViewController: UIViewController, UITableViewDelegate, UITableViewDat
     
     fileprivate lazy var dateFormatter: DateFormatter = {
         let formatter = DateFormatter()
-        formatter.dateFormat = "yyyy/MM/dd"
+        formatter.dateFormat = "yyyy.MM.dd"
         return formatter
     }()
     
